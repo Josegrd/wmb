@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ListFood() {
-  const [food, setFood] = useState([
+  const [food, setFood] = useState(() => {
+    const savedFoods = localStorage.getItem("foods");
+    return savedFoods ? JSON.parse(savedFoods) : [
     {
       name: "Nasi Goreng",
       price: 10000,
@@ -12,13 +14,17 @@ export default function ListFood() {
       price: 12000,
       img: "https://cdn0-production-images-kly.akamaized.net/rqfdE8NAgggV4Zg46ZsMqvUjDpU=/1200x1200/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4162951/original/017212600_1663563648-shutterstock_2159757881.jpg",
     },
-  ]);
+  ]});
 
   const [newFood, setNewFood] = useState({
     name: "",
     price: "",
     img: "",
   });
+
+  useEffect(() => {
+    localStorage.setItem("foods", JSON.stringify(food));
+  }, [food]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
