@@ -1,11 +1,32 @@
+import { useState } from "react";
+
 export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const admin = {
+    username: "admin",
+    password: "12345678",
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (username === admin.username && password === admin.password) {
+      window.location.href = "/ListFood";
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+    } else {
+      alert("Wrong username or password");
+    }
+  };
+
   return (
     <>
       <div className="bg-[#EB8317] h-[100vh] overflow-hidden">
         <div className="container text-white mx-auto lg:h-full flex flex-col justify-center items-center">
           <div className="lg:flex lg:flex-wrap md:flex md:flex-wrap lg:mt-[150px] mt-52 mb-36  lg:flex-row w-full lg:items-center justify-center">
             <div className="lg:w-1/2 md:w-1/2 lg:max-w-lg p-4 bg-white border border-gray-200 rounded-3xl shadow md:p-8 mx-10 md:mx-0">
-              <form className="space-y-6 mb-10">
+              <form className="space-y-6 mb-10" onSubmit={handleLogin}>
                 <h5 className="text-xl font-medium text-black">
                   Sign in to Reserve
                 </h5>
@@ -22,6 +43,8 @@ export default function Login() {
                     id="text"
                     className="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400 text-black"
                     placeholder="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                   />
                 </div>
@@ -37,6 +60,8 @@ export default function Login() {
                     name="password"
                     id="password"
                     placeholder="••••••••"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:placeholder-gray-400 text-black"
                     required
                   />
