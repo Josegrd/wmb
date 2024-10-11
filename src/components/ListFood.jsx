@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function ListFood() {
   const [isEdit, setIsEdit] = useState(false);
+  const [isTrue, setIsTrue] = useState(false);
 
   const [food, setFood] = useState(() => {
     const savedFoods = localStorage.getItem("foods");
@@ -26,7 +27,15 @@ export default function ListFood() {
 
   useEffect(() => {
     localStorage.setItem("foods", JSON.stringify(food));
+
   }, [food]);
+
+  useEffect(() => {
+    const isValidPrice = newFood.price !== "" && parseInt(newFood.price) > 0;
+    const isValidName = newFood.name !== "";
+    const isValidImg = newFood.img !== "";
+    setIsTrue(isValidPrice && isValidName && isValidImg);
+  }, [newFood]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -100,7 +109,10 @@ export default function ListFood() {
           </div>
           <button
             type="submit"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
+              isTrue ? "" : "disabled:bg-gray-500 cursor-not-allowed"
+            }`}
+            disabled={!isTrue}
           >
             {isEdit ? "Submit Edit" : "Add Food"}
           </button>

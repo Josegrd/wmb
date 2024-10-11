@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 
 export default function ListTable() {
   const [isEdit, setIsEdit] = useState(false);
+  const [isTrue, setIsTrue] = useState(false);
 
   const [tables, setTables] = useState(() => {
     const savedTables = localStorage.getItem("tables");
-    return savedTables ? JSON.parse(savedTables) : [
-    { id: 1, capacity: 4, available: true },
-    { id: 2, capacity: 2, available: false },
-    { id: 3, capacity: 6, available: true },
-  ]});
+    return savedTables
+      ? JSON.parse(savedTables)
+      : [
+          { id: 1, capacity: 4, available: true },
+          { id: 2, capacity: 2, available: false },
+          { id: 3, capacity: 6, available: true },
+        ];
+  });
 
   const [newTable, setNewTable] = useState({
     id: "",
@@ -19,7 +23,15 @@ export default function ListTable() {
 
   useEffect(() => {
     localStorage.setItem("tables", JSON.stringify(tables));
+
+    
   }, [tables]);
+
+
+  useEffect(() => {
+    const isValidCapacity = newTable.capacity !== "" && parseInt(newTable.capacity) > 0;
+    setIsTrue(isValidCapacity);
+  }, [newTable.capacity]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -31,7 +43,11 @@ export default function ListTable() {
     if (newTable.id === "") {
       setTables([
         ...tables,
-        { ...newTable, id: tables.length + 1, capacity: parseInt(newTable.capacity) },
+        {
+          ...newTable,
+          id: tables.length + 1,
+          capacity: parseInt(newTable.capacity),
+        },
       ]);
     } else {
       const updatedTables = tables.map((table) =>
@@ -86,7 +102,9 @@ export default function ListTable() {
           </div>
           <button
             type="submit"
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+              ${isTrue ? "" : "disabled:bg-gray-500 cursor-not-allowed "}`}
+            disabled={!isTrue}
           >
             {isEdit ? "Update Table" : "Add Table"}
           </button>
