@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 export default function ListFood() {
+  const [isEdit, setIsEdit] = useState(false);
+
   const [food, setFood] = useState(() => {
     const savedFoods = localStorage.getItem("foods");
     return savedFoods ? JSON.parse(savedFoods) : [
@@ -35,6 +37,7 @@ export default function ListFood() {
     e.preventDefault();
     setFood([...food, { ...newFood, price: parseInt(newFood.price) }]);
     setNewFood({ name: "", price: "", img: "" });
+    setIsEdit(false);
   };
 
   const handleDeleteFood = (index) => {
@@ -43,6 +46,7 @@ export default function ListFood() {
   };
 
   const handleEditFood = (index) => {
+    setIsEdit(true);
     const foodToEdit = food[index];
     setNewFood(foodToEdit);
     handleDeleteFood(index);
@@ -51,7 +55,7 @@ export default function ListFood() {
   return (
     <>
       <div className={`container h-[100vh] py-20`}>
-        <h1 className="text-[#02063D] mb-10 lg:text-6xl md:text-5xl text-4xl font-bold underline">
+        <h1 className="text-[#10375C] mb-10 lg:text-6xl md:text-5xl text-4xl font-bold underline">
           Food List
         </h1>
         <form onSubmit={handleAddFood} className="mb-8">
@@ -98,7 +102,7 @@ export default function ListFood() {
             type="submit"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Add Food
+            {isEdit ? "Submit Edit" : "Add Food"}
           </button>
         </form>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 export default function ListTable() {
+  const [isEdit, setIsEdit] = useState(false);
+
   const [tables, setTables] = useState(() => {
     const savedTables = localStorage.getItem("tables");
     return savedTables ? JSON.parse(savedTables) : [
@@ -40,6 +42,7 @@ export default function ListTable() {
       setTables(updatedTables);
     }
 
+    setIsEdit(false);
     setNewTable({ id: "", capacity: "", available: true });
   };
 
@@ -49,6 +52,7 @@ export default function ListTable() {
   };
 
   const handleEditTable = (index) => {
+    setIsEdit(true);
     const tableToEdit = tables[index];
     setNewTable(tableToEdit);
   };
@@ -63,7 +67,7 @@ export default function ListTable() {
   return (
     <>
       <div className={`container h-[100vh] py-20`}>
-        <h1 className="text-[#02063D] lg:text-6xl md:text-5xl text-4xl font-bold underline mb-10">
+        <h1 className="text-[#10375C] lg:text-6xl md:text-5xl text-4xl font-bold underline mb-10">
           Table List
         </h1>
         <form onSubmit={handleAddorEditTable} className="mb-8">
@@ -84,7 +88,7 @@ export default function ListTable() {
             type="submit"
             className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Add Table
+            {isEdit ? "Update Table" : "Add Table"}
           </button>
         </form>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
