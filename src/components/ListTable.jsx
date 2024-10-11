@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Sidebar from "./Sidebar";
 
 export default function ListTable() {
   const [tables, setTables] = useState([
@@ -9,6 +8,7 @@ export default function ListTable() {
   ]);
 
   const [newTable, setNewTable] = useState({
+    id: "",
     capacity: "",
     available: true,
   });
@@ -18,17 +18,23 @@ export default function ListTable() {
     setNewTable({ ...newTable, [name]: value });
   };
 
-  const handleAddTable = (e) => {
+  const handleAddorEditTable = (e) => {
     e.preventDefault();
-    setTables([
-      ...tables,
-      {
-        ...newTable,
-        id: tables.length + 1,
-        capacity: parseInt(newTable.capacity),
-      },
-    ]);
-    setNewTable({ capacity: "", available: true });
+    if (newTable.id === "") {
+      setTables([
+        ...tables,
+        { ...newTable, id: tables.length + 1, capacity: parseInt(newTable.capacity) },
+      ]);
+    } else {
+      const updatedTables = tables.map((table) =>
+        table.id === newTable.id
+          ? { ...table, capacity: parseInt(newTable.capacity) }
+          : table
+      );
+      setTables(updatedTables);
+    }
+
+    setNewTable({ id: "", capacity: "", available: true });
   };
 
   const handleDeleteTable = (index) => {
@@ -39,7 +45,6 @@ export default function ListTable() {
   const handleEditTable = (index) => {
     const tableToEdit = tables[index];
     setNewTable(tableToEdit);
-    handleDeleteTable(index);
   };
 
   const handleToggleAvailability = (index) => {
@@ -51,12 +56,11 @@ export default function ListTable() {
 
   return (
     <>
-      <Sidebar />
       <div className={`container h-[100vh] py-20`}>
         <h1 className="text-[#02063D] lg:text-6xl md:text-5xl text-4xl font-bold underline mb-10">
           Table List
         </h1>
-        <form onSubmit={handleAddTable} className="mb-8">
+        <form onSubmit={handleAddorEditTable} className="mb-8">
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">
               Capacity

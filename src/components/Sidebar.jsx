@@ -106,7 +106,7 @@ export default function Sidebar() {
                 </h1>
               </a>
             </div>
-            <div className="flex items-center mb-4">
+            {/* <div className="flex items-center mb-4">
               <a
                 href="/MoreInfo"
                 className="flex items-center cursor-pointer group"
@@ -121,9 +121,9 @@ export default function Sidebar() {
                   MORE
                 </h1>
               </a>
-            </div>
+            </div> */}
             <div
-              className="flex items-center mb-4 mt-40"
+              className="flex items-center mb-4 mt-[650px]"
               onClick={handleLogout}
             >
               <a className="flex items-center cursor-pointer group">
