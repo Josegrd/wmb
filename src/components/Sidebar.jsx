@@ -7,6 +7,12 @@ export default function Sidebar() {
   const hamburgerRef = useRef(null);
   const navMenuRef = useRef(null);
 
+  const handleLogout = () => {
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+    window.location.href = "/login";
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("header");
@@ -85,7 +91,7 @@ export default function Sidebar() {
           <div className="mt-32 ml-9">
             <div className="flex items-center mb-4">
               <a
-                href="/profile"
+                href="/ListFood"
                 className="flex items-center cursor-pointer group"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -102,7 +108,7 @@ export default function Sidebar() {
             </div>
             <div className="flex items-center mb-4">
               <a
-                href="/make-loan"
+                href="/ListTable"
                 className="flex items-center cursor-pointer group"
               >
                 <MdOutlineTableRestaurant />
@@ -116,7 +122,7 @@ export default function Sidebar() {
             </div>
             <div className="flex items-center mb-4">
               <a
-                href="/more-information"
+                href="/MoreInfo"
                 className="flex items-center cursor-pointer group"
               >
                 <CiCircleMore />
@@ -129,7 +135,10 @@ export default function Sidebar() {
                 </h1>
               </a>
             </div>
-            <div className="flex items-center mb-4 mt-40">
+            <div
+              className="flex items-center mb-4 mt-40"
+              onClick={handleLogout}
+            >
               <a className="flex items-center cursor-pointer group">
                 <MdLogout />
 

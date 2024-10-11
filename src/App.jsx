@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Sidebar from "./components/Sidebar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MoreInfo from "./components/MoreInfo";
 
 function App() {
   return (
@@ -24,11 +25,20 @@ function App() {
             }
           />
           <Route
-            path="/ListFood"
+            path="/ListTable"
             element={
               <ProtectedRoute>
                 <Sidebar />
                 <ListTable />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/MoreInfo"
+            element={
+              <ProtectedRoute>
+                <Sidebar />
+                <MoreInfo />
               </ProtectedRoute>
             }
           />
