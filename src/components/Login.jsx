@@ -9,8 +9,11 @@ export default function Login() {
   
 
   useEffect(() => {
-    if(email !== "" && password !== "") {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(email !== "" && password !== "" && emailRegex.test(email)) {
       setIsTrue(true)
+    }else {
+      setIsTrue(false)
     }
   })
 
