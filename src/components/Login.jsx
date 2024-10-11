@@ -6,10 +6,9 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isTrue, setIsTrue] = useState(false);
-  
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   useEffect(() => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(email !== "" && password !== "" && emailRegex.test(email)) {
       setIsTrue(true)
     }else {
@@ -154,9 +153,11 @@ export default function Login() {
                 </div>
                 <button
                   type="submit"
-                  className={`w-full text-white bg-[#10375C] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ${isTrue ? "" : "disabled:bg-gray-500 cursor-not-allowed"}` 
-                  }
-                  disabled={!isTrue}>
+                  className={`w-full text-white bg-[#10375C] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ${
+                    isTrue ? "" : "disabled:bg-gray-500 cursor-not-allowed"
+                  }`}
+                  disabled={!isTrue}
+                >
                   Login to your account
                 </button>
               </form>

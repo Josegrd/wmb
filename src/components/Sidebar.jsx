@@ -84,7 +84,7 @@ export default function Sidebar() {
               >
                 <IoFastFoodOutline />
                 <h1
-                  className={`text-[#10375C] lg:text-[24px] md:text-[15px] font-sans ml-3 font-bold group-hover:text-[#84CECF] group-active:italic relative`}
+                  className={`text-[#10375C] lg:text-[24px] md:text-[15px] font-sans ml-3 font-bold group-hover:text-[#387478] group-active:italic relative`}
                 >
                   FOOD LIST
                 </h1>
@@ -100,7 +100,7 @@ export default function Sidebar() {
               >
                 <MdOutlineTableRestaurant />
                 <h1
-                  className={`text-[#10375C] lg:text-[24px] md:text-[15px] font-sans ml-3 font-bold group-hover:text-[#84CECF] group-active:italic relative`}
+                  className={`text-[#10375C] lg:text-[24px] md:text-[15px] font-sans ml-3 font-bold group-hover:text-[#387478] group-active:italic relative`}
                 >
                   TABLE LIST
                 </h1>

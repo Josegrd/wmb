@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ListTable() {
-  const [tables, setTables] = useState([
+  const [tables, setTables] = useState(() => {
+    const savedTables = localStorage.getItem("tables");
+    return savedTables ? JSON.parse(savedTables) : [
     { id: 1, capacity: 4, available: true },
     { id: 2, capacity: 2, available: false },
     { id: 3, capacity: 6, available: true },
-  ]);
+  ]});
 
   const [newTable, setNewTable] = useState({
     id: "",
     capacity: "",
     available: true,
   });
+
+  useEffect(() => {
+    localStorage.setItem("tables", JSON.stringify(tables));
+  }, [tables]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
