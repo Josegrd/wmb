@@ -3,18 +3,18 @@ export default function MoreInfo(){
       <>
         <div className={`container h-[100vh] py-20`}>
           <h1 className="text-[#02063D] lg:text-6xl md:text-5xl text-4xl font-bold underline">
-            More Info
+            More Information
           </h1>
           <div className="mt-10">
             <p className="text-justify lg:w-[1200px]">
-              Warung Makan Bahari adalah tempat kuliner yang menawarkan beragam
-              hidangan segar dengan cita rasa autentik dan harga terjangkau.
-              Berlokasi di Beberapa kota di Indonesia. Warung Makan Bahari menyajikan
-              menu favorit, semuanya disiapkan dengan bahan berkualitas dan
-              bumbu khas. Kami mengutamakan pelayanan ramah dan suasana santai,
-              cocok untuk makan bersama keluarga maupun teman-teman. Nikmati
-              pengalaman makan yang berbeda di Warung Makan Bahari, di mana
-              kesegaran laut hadir di meja Anda.
+              <span className="text-[#FD8B51] font-bold">Warung Makan Bahari</span> adalah tempat kuliner yang
+              menawarkan beragam hidangan segar dengan cita rasa autentik dan
+              harga terjangkau. Berlokasi di Beberapa kota di Indonesia. Warung
+              Makan Bahari menyajikan menu favorit, semuanya disiapkan dengan
+              bahan berkualitas dan bumbu khas. Kami mengutamakan pelayanan
+              ramah dan suasana santai, cocok untuk makan bersama keluarga
+              maupun teman-teman. Nikmati pengalaman makan yang berbeda di
+              Warung Makan Bahari, di mana kesegaran laut hadir di meja Anda.
             </p>
             <div className="mt-16 text-center lg:text-left md:text-left">
               <h1 className="text-4xl font-bold text-[#02063D]">Alamat</h1>
