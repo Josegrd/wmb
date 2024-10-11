@@ -106,7 +106,7 @@ export default function Sidebar() {
                 </h1>
               </a>
             </div>
-            {/* <div className="flex items-center mb-4">
+            <div className="flex items-center mb-4">
               <a
                 href="/MoreInfo"
                 className="flex items-center cursor-pointer group"
@@ -116,14 +116,14 @@ export default function Sidebar() {
               >
                 <CiCircleMore />
                 <h1
-                  className={`text-[#10375C] lg:text-[24px] md:text-[15px] font-sans ml-3 font-bold group-hover:text-[#84CECF] group-active:italic relative`}
+                  className={`text-[#10375C] lg:text-[24px] md:text-[15px] font-sans ml-3 font-bold group-hover:text-[#387478] group-active:italic relative`}
                 >
                   MORE
                 </h1>
               </a>
-            </div> */}
+            </div>
             <div
-              className="flex items-center mb-4 mt-[650px]"
+              className="flex items-center mb-4 mt-[600px]"
               onClick={handleLogout}
             >
               <a className="flex items-center cursor-pointer group">
