@@ -4,14 +4,14 @@ export default function Hero() {
   return (
     <>
       <div className="h-[100vh] overflow-hidden lg:overflow-auto">
-        <div className="container text-Black lg:mx-auto md:pt-44 py-28 md:py-0 lg:py-0 mt-40">
+        <div className="container text-Black lg:mx-auto md:pt-44 py-28 md:py-0 lg:py-0 lg:mt-40">
           <div className="flex flex-wrap lg:mt-16 lg:flex-row-reverse md:flex-row-reverse">
             <div className="w-full self-end px-4 lg:w-1/2 md:w-1/2">
               <div className="relative">
                 <img
                   src={ImageHeroes}
                   alt="Heroes Images"
-                  className="w-40 h-40 lg:w-[520px] lg:h-[520px] mx-auto lg:mb-32 mb-12 object-cover "
+                  className="w-72 h-72 lg:w-[520px] lg:h-[520px] mx-auto lg:mb-32 mb-12 object-cover "
                 />
               </div>
             </div>
@@ -35,7 +35,7 @@ export default function Hero() {
               <div className="text-white text-2xl flex gap-5">
                 <button
                   type="button"
-                  className="lg:w-64 w-24 lg:text-2xl text-[17px] lg:py-2.5 py-1.5 bg-[#EB8317] rounded-full text-center mb-2 hover:bg-[#FD8B51] transition-colors duration-300"
+                  className="lg:w-64 w-44 lg:text-2xl text-[17px] lg:py-2.5 py-1.5 bg-[#EB8317] rounded-full text-center mb-2 hover:bg-[#FD8B51] transition-colors duration-300"
                 >
                   <a href="/login">Login To Reserve</a>
                 </button>

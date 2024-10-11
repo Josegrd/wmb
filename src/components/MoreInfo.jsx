@@ -16,9 +16,9 @@ export default function MoreInfo(){
               pengalaman makan yang berbeda di Warung Makan Bahari, di mana
               kesegaran laut hadir di meja Anda.
             </p>
-            <div className="mt-16">
+            <div className="mt-16 text-center lg:text-left md:text-left">
               <h1 className="text-4xl font-bold text-[#02063D]">Alamat</h1>
-              <div className="ms-2 mt-5 flex gap-16">
+              <div className="ms-2 mt-5 lg:flex md:flex gap-16 ">
                 <div>
                   <div className="text-[18px] py-5">
                     <p className="font-bold text-[23px] text-[#EB8317]">
